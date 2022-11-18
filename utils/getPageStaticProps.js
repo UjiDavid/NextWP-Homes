@@ -13,6 +13,10 @@ export const getPageStaticProps = async (context) => {
             id
             title
             blocksJSON
+            seo {
+              title
+              metaDesc
+            }
             featuredImage {
               node {
                 sourceUrl
@@ -23,6 +27,10 @@ export const getPageStaticProps = async (context) => {
             id
             title
             blocksJSON
+            seo {
+              title
+              metaDesc
+            }
             featuredImage {
               node {
                 sourceUrl
@@ -55,6 +63,7 @@ export const getPageStaticProps = async (context) => {
   const blocks = await cleanAndTransformBlocks(data.nodeByUri.blocksJSON);
   return {
     props: {
+      seo: data.nodeByUri.seo,
       title: data.nodeByUri.title,
       featuredImage: data.nodeByUri.featuredImage?.node?.sourceUrl || null,
       mainMenuItems: mapMainMenuItems(data.menuItems.edges),
